@@ -7,11 +7,12 @@ package org.support.generator;
 //import org.mybatis.generator.exception.XMLParserException;
 //import org.mybatis.generator.internal.DefaultShellCallback;
 
+import com.sun.org.apache.xml.internal.security.parser.XMLParserException;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.xml.ConfigurationParser;
 import org.mybatis.generator.exception.InvalidConfigurationException;
-import org.mybatis.generator.exception.XMLParserException;
+//import org.mybatis.generator.exception.XMLParserException;
 import org.mybatis.generator.internal.DefaultShellCallback;
 
 import java.io.File;
@@ -38,7 +39,7 @@ public class MybatisGenerator {
             XMLParserException,
             InvalidConfigurationException,
             SQLException,
-            InterruptedException{
+            InterruptedException, org.mybatis.generator.exception.XMLParserException {
         if (!configFile.exists()){
             System.out.println("配置文件不存在");
             return;
