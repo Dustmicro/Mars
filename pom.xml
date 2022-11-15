@@ -41,10 +41,22 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.3</version>
         </dependency>
+
 <!--                 <dependency>-->
 <!--                     <groupId>org.springframework.boot</groupId>-->
 <!--                     <artifactId>spring-boot-starter-test</artifactId>-->
 <!--                     <scope>test</scope>-->
 <!--                 </dependency>-->
     </dependencies>
+    <build>
+    <resources>
+        <!--打包指定目录中的xml文件(在java目录存放xml时需要配置)-->
+        <resource>
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>**/*.properties</include>
+            </includes>
+        </resource>
+    </resources>
+    </build>
 </project>

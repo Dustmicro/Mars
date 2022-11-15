@@ -1,4 +1,4 @@
-package org.support.generator.plugins;
+package com.example.plugins;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.dom.xml.Attribute;
