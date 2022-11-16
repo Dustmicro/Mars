@@ -1,4 +1,4 @@
-package org.support.generator.plugins;
+package com.example.plugins;
 
 
 import org.mybatis.generator.api.dom.java.*;

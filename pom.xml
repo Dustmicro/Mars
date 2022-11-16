@@ -7,13 +7,18 @@
 <!--        <groupId>com.myccb</groupId>-->
 <!--        <version>2.0-SNAPSHOT</version>-->
 <!--    </parent>-->
-    <groupId>com.myccb</groupId>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>generator.support</groupId>
+    <artifactId>support-generator</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+<!--    <groupId>com.example</groupId>-->
 <!--    <artifactId>Mars</artifactId>-->
     <packaging>pom</packaging>
-    <version>2.0-SNAPSHOT</version>
-    <modelVersion>4.0.0</modelVersion>
+<!--    <version>2.0-SNAPSHOT</version>-->
+<!--    <modelVersion>4.0.0</modelVersion>-->
 
-    <artifactId>Mars</artifactId>
+<!--    <artifactId>Mars</artifactId>-->
 
     <properties>
 <!--        <maven.compiler.source>8</maven.compiler.source>-->
@@ -30,16 +35,16 @@
             <version>5.1.46</version>
         </dependency>
         <!--   MyBatis       -->
-        <dependency>
-            <groupId>org.mybatis.generator</groupId>
-            <artifactId>mybatis-generator-core</artifactId>
-            <version>1.3.5</version>
-        </dependency>
         <!--         pagehelper -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.5</version>
         </dependency>
 <!--                 <dependency>-->
 <!--                     <groupId>org.springframework.boot</groupId>-->
@@ -47,4 +52,24 @@
 <!--                     <scope>test</scope>-->
 <!--                 </dependency>-->
     </dependencies>
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.mybatis.generator</groupId>-->
+<!--                <artifactId>mybatis-generator-maven-plugin</artifactId>-->
+<!--                <version>1.3.5</version>-->
+<!--                <configuration>-->
+<!--                    <configurationFile>/generator/generatorConfiguration.xml</configurationFile>-->
+<!--                    <verbose>true</verbose>-->
+<!--                    <overwrite>true</overwrite>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 </project>

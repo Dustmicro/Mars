@@ -1,18 +1,10 @@
-package org.support.generator;
+package com.example;
 
-//import org.mybatis.generator.api.MyBatisGenerator;
-//import org.mybatis.generator.config.Configuration;
-//import org.mybatis.generator.config.xml.ConfigurationParser;
-//import org.mybatis.generator.exception.InvalidConfigurationException;
-//import org.mybatis.generator.exception.XMLParserException;
-//import org.mybatis.generator.internal.DefaultShellCallback;
-
-import com.sun.org.apache.xml.internal.security.parser.XMLParserException;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.xml.ConfigurationParser;
 import org.mybatis.generator.exception.InvalidConfigurationException;
-//import org.mybatis.generator.exception.XMLParserException;
+import org.mybatis.generator.exception.XMLParserException;
 import org.mybatis.generator.internal.DefaultShellCallback;
 
 import java.io.File;
@@ -29,7 +21,7 @@ public class MybatisGenerator {
 
     private static File configFile;
     static {
-        String path = System.getProperty("user.dir").concat("src\\main\\resources\\generator\\generatorConfiguration.xml");
+        String path = System.getProperty("user.dir").concat("\\src\\main\\resources\\generator\\generatorConfiguration.xml");
         System.out.println(path);
         configFile = new File(path);
     }
@@ -39,7 +31,7 @@ public class MybatisGenerator {
             XMLParserException,
             InvalidConfigurationException,
             SQLException,
-            InterruptedException, org.mybatis.generator.exception.XMLParserException {
+            InterruptedException, XMLParserException {
         if (!configFile.exists()){
             System.out.println("配置文件不存在");
             return;

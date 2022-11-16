@@ -1,4 +1,4 @@
-package org.support.generator.plugins;
+package com.example.plugins;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.dom.xml.Attribute;
@@ -27,24 +27,27 @@ public class CustomAbstractXmlElementGenerator extends AbstractXmlElementGenerat
         for (IntrospectedColumn introspectedColumn : introspectedTable.getAllColumns()) {
             XmlElement selectNotNullElement = new XmlElement("if");
             sb.setLength(0);
-            if ("status_cd".equals(MyBatis3FormattingUtilities.getEscapedColumnName(introspectedColumn))) {
-                //假如是数据状态字段直接
-                sb.append("and");
-                //添加别名t
-                sb.append("t.");
-                sb.append(MyBatis3FormattingUtilities.getEscapedColumnName(introspectedColumn));
-                //添加等号
-                sb.append(" = 1");
-                TextElement textElement = new TextElement(sb.toString());
-                selectTrimElement.addElement(textElement);
-                continue;
-            }
+//            if ("status_cd".equals(MyBatis3FormattingUtilities.getEscapedColumnName(introspectedColumn))) {
+//                //假如是数据状态字段直接
+//                sb.append("and");
+//                //添加别名t
+//                sb.append("t.");
+//                sb.append(MyBatis3FormattingUtilities.getEscapedColumnName(introspectedColumn));
+//                //添加等号
+//                sb.append(" = 1");
+//                TextElement textElement = new TextElement(sb.toString());
+//                selectTrimElement.addElement(textElement);
+//                continue;
+//            }
             sb.append("null != ");
             sb.append(introspectedColumn.getJavaProperty());
             selectNotNullElement.addAttribute(new Attribute("test", sb.toString()));
             sb.setLength(0);
             //添加and
             sb.append("and");
+            sb.append("t.");
+            sb.append(MyBatis3FormattingUtilities.getEscapedColumnName(introspectedColumn));
+            //添加别名t
             sb.append("t.");
             sb.append(MyBatis3FormattingUtilities.getEscapedColumnName(introspectedColumn));
             //添加等号
@@ -88,26 +91,26 @@ public class CustomAbstractXmlElementGenerator extends AbstractXmlElementGenerat
         parentElement.addElement(list);
 
         //增加pageList
-        XmlElement pageList = new XmlElement("select");
-        pageList.addAttribute(new Attribute("id", "pageList"));
-        pageList.addAttribute(new Attribute("resultMap", "BaseResultMap"));
-        pageList.addAttribute(new Attribute("parameterType", introspectedTable.getBaseRecordType()));
-        pageList.addElement(selectText);
-        pageList.addElement(include);
+//        XmlElement pageList = new XmlElement("select");
+//        pageList.addAttribute(new Attribute("id", "pageList"));
+//        pageList.addAttribute(new Attribute("resultMap", "BaseResultMap"));
+//        pageList.addAttribute(new Attribute("parameterType", introspectedTable.getBaseRecordType()));
+//        pageList.addElement(selectText);
+//        pageList.addElement(include);
 
         //定义一个if节点的xml
-        XmlElement notNullElement = new XmlElement("if");
-        sb.setLength(0);
-        sb.append("page != null");
-        //给if节点添加一个属性test  属性值 page != null
-        notNullElement.addAttribute(new Attribute("test", sb.toString()));
-
-        sb.setLength(0);
-        sb.append("limit #{startNum,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}");
-        TextElement pageText = new TextElement(sb.toString());
-        notNullElement.addElement(pageText);
-        pageList.addElement(notNullElement);
-
-        parentElement.addElement(pageList);
+//        XmlElement notNullElement = new XmlElement("if");
+//        sb.setLength(0);
+//        sb.append("page != null");
+//        //给if节点添加一个属性test  属性值 page != null
+//        notNullElement.addAttribute(new Attribute("test", sb.toString()));
+//
+//        sb.setLength(0);
+//        sb.append("limit #{startNum,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}");
+//        TextElement pageText = new TextElement(sb.toString());
+//        notNullElement.addElement(pageText);
+//        pageList.addElement(notNullElement);
+//
+//        parentElement.addElement(pageList);
     }
 }

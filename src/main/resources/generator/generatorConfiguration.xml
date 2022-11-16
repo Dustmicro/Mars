@@ -3,20 +3,20 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-<properties resource="generator\config.properties"/>
-<classPathEntry location="D:\Maven\LocalWarehouse\mysql\mysql-connector-java\5.1.45\mysql-connector-java-5.1.45.jar"/>
-<context id="sqlserverTables" targetRuntime="MyBatis3">
+<!--    <properties resource="generator\config.properties"/>-->
+    <classPathEntry location="D:\Maven\LocalWarehouse\mysql\mysql-connector-java\5.1.45\mysql-connector-java-5.1.45.jar"/>
+    <context id="sqlserverTables" targetRuntime="MyBatis3">
 <!--        生成的pojo,将implements  Serializable-->
 <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
-<plugin type="org.support.generator.plugins.CustomPlugin"></plugin>
+<plugin type="com.example.plugins.CustomPlugin"></plugin>
 <commentGenerator>
     <!--            是否去除自动生成的注释  true是  false否-->
     <property name="suppressAllComments" value="true"/>
 </commentGenerator>
 <!--        数据连接URL,用户名、密码-->
-<jdbcConnection driverClass="${jdbc.driver}"
-                connectionURL="${jdbc.url}"
-                userId="${jdbc.username}" password="${jdbc.password}">
+<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost:3306/hyf-supperpj"
+                userId="root" password="233235">
 </jdbcConnection>
 <!--        默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，
             把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal-->
