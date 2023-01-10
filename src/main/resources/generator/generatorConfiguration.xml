@@ -15,8 +15,8 @@
 </commentGenerator>
 <!--        数据连接URL,用户名、密码-->
 <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                connectionURL="jdbc:mysql://localhost:3306/hyf-supperpj"
-                userId="root" password="233235">
+                connectionURL="jdbc:mysql://116.63.133.52:3306/ktzq-dev"
+                userId="root" password="1qaz@WSX">
 </jdbcConnection>
 <!--        默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，
             把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal-->
@@ -42,7 +42,7 @@
 </javaClientGenerator>
 
 <!--        列出要生成代码的表-->
-<table tableName="u_user" domainObjectName="User"
+<table tableName="college_member" domainObjectName="CollegeMember"
        enableCountByExample="false" enableUpdateByExample="false"
        enableDeleteByExample="false" enableSelectByExample="false"
        selectByExampleQueryId="false">
