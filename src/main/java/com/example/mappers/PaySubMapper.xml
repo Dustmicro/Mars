@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.PaySubMapper">
+  <resultMap id="BaseResultMap" type="com.example.bean.db.PaySub">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sub_name" jdbcType="VARCHAR" property="subName" />
+    <result column="sub_type" jdbcType="VARCHAR" property="subType" />
+    <result column="sub_count" jdbcType="VARCHAR" property="subCount" />
+    <result column="sub_pay" jdbcType="VARCHAR" property="subPay" />
+    <result column="sub_time" jdbcType="TIMESTAMP" property="subTime" />
+    <result column="status_cd" jdbcType="VARCHAR" property="statusCd" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sub_name, sub_type, sub_count, sub_pay, sub_time, status_cd
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_sub
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pay_sub
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.bean.db.PaySub">
+    insert into pay_sub (id, sub_name, sub_type, 
+      sub_count, sub_pay, sub_time, 
+      status_cd)
+    values (#{id,jdbcType=INTEGER}, #{subName,jdbcType=VARCHAR}, #{subType,jdbcType=VARCHAR}, 
+      #{subCount,jdbcType=VARCHAR}, #{subPay,jdbcType=VARCHAR}, #{subTime,jdbcType=TIMESTAMP}, 
+      #{statusCd,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.bean.db.PaySub">
+    insert into pay_sub
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="subName != null">
+        sub_name,
+      </if>
+      <if test="subType != null">
+        sub_type,
+      </if>
+      <if test="subCount != null">
+        sub_count,
+      </if>
+      <if test="subPay != null">
+        sub_pay,
+      </if>
+      <if test="subTime != null">
+        sub_time,
+      </if>
+      <if test="statusCd != null">
+        status_cd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="subName != null">
+        #{subName,jdbcType=VARCHAR},
+      </if>
+      <if test="subType != null">
+        #{subType,jdbcType=VARCHAR},
+      </if>
+      <if test="subCount != null">
+        #{subCount,jdbcType=VARCHAR},
+      </if>
+      <if test="subPay != null">
+        #{subPay,jdbcType=VARCHAR},
+      </if>
+      <if test="subTime != null">
+        #{subTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="statusCd != null">
+        #{statusCd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.bean.db.PaySub">
+    update pay_sub
+    <set>
+      <if test="subName != null">
+        sub_name = #{subName,jdbcType=VARCHAR},
+      </if>
+      <if test="subType != null">
+        sub_type = #{subType,jdbcType=VARCHAR},
+      </if>
+      <if test="subCount != null">
+        sub_count = #{subCount,jdbcType=VARCHAR},
+      </if>
+      <if test="subPay != null">
+        sub_pay = #{subPay,jdbcType=VARCHAR},
+      </if>
+      <if test="subTime != null">
+        sub_time = #{subTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="statusCd != null">
+        status_cd = #{statusCd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.bean.db.PaySub">
+    update pay_sub
+    set sub_name = #{subName,jdbcType=VARCHAR},
+      sub_type = #{subType,jdbcType=VARCHAR},
+      sub_count = #{subCount,jdbcType=VARCHAR},
+      sub_pay = #{subPay,jdbcType=VARCHAR},
+      sub_time = #{subTime,jdbcType=TIMESTAMP},
+      status_cd = #{statusCd,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <sql id="base_query">
+    <trim prefix="WHERE" prefixOverrides="AND | OR">
+      <if test="null != id">
+        andt.id=#{id,jdbcType=INTEGER}
+      </if>
+      <if test="null != subName">
+        andt.sub_name=#{subName,jdbcType=VARCHAR}
+      </if>
+      <if test="null != subType">
+        andt.sub_type=#{subType,jdbcType=VARCHAR}
+      </if>
+      <if test="null != subCount">
+        andt.sub_count=#{subCount,jdbcType=VARCHAR}
+      </if>
+      <if test="null != subPay">
+        andt.sub_pay=#{subPay,jdbcType=VARCHAR}
+      </if>
+      <if test="null != subTime">
+        andt.sub_time=#{subTime,jdbcType=TIMESTAMP}
+      </if>
+      andt.status_cd = 1
+    </trim>
+  </sql>
+  <select id="find" parameterType="com.example.bean.db.PaySub" resultMap="BaseResultMap">
+    selectt.*frompay_sub t
+    <include refid="base_query" />
+  </select>
+  <select id="list" parameterType="com.example.bean.db.PaySub" resultMap="BaseResultMap">
+    selectt.*frompay_sub t
+    <include refid="base_query" />
+  </select>
+  <select id="pageList" parameterType="com.example.bean.db.PaySub" resultMap="BaseResultMap">
+    selectt.*frompay_sub t
+    <include refid="base_query" />
+    <if test="page != null">
+      limit #{startNum,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </if>
+  </select>
+</mapper>

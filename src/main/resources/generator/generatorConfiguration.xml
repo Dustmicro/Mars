@@ -42,7 +42,7 @@
 </javaClientGenerator>
 
 <!--        列出要生成代码的表-->
-<table tableName="college_member" domainObjectName="CollegeMember"
+<table tableName="pay_sub" domainObjectName="PaySub"
        enableCountByExample="false" enableUpdateByExample="false"
        enableDeleteByExample="false" enableSelectByExample="false"
        selectByExampleQueryId="false">
